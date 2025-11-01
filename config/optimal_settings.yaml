@@ -1,0 +1,58 @@
+# config/optimal_settings.yaml
+engine:
+  # Optimal settings for maximum speed with safety
+  delays:
+    initial_messages:  # First 10 messages
+      min: 8
+      max: 15
+    warming_up:  # Messages 11-50
+      min: 5
+      max: 12
+    established:  # Messages 51-200
+      min: 3
+      max: 8
+    trusted:  # Messages 200+
+      min: 2
+      max: 5
+  
+  breaks:
+    every_n_messages: 50
+    break_duration:
+      min: 30
+      max: 60
+  
+  typing:
+    enabled: true
+    chars_per_second:
+      min: 2.5
+      max: 4.5
+    max_duration: 10
+  
+  variations:
+    enable_greetings: true
+    enable_endings: true
+    enable_unicode: true
+    variation_probability: 0.7
+
+sessions:
+  max_parallel: 3  # Optimal for speed/safety balance
+  max_messages_per_session: 500
+  health_threshold: 20
+  rotation_strategy: "weighted"  # weighted, round-robin, random
+  
+performance:
+  batch_size: 50
+  max_retries: 2
+  timeout: 30
+  
+anti_detection:
+  randomize_order: true
+  unique_messages: true
+  browser_fingerprinting: true
+  human_simulation: true
+  
+monitoring:
+  health_check_interval: 30
+  auto_recovery: true
+  alert_threshold: 10  # Failed messages
+
